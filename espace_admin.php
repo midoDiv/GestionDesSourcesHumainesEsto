@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Cache-control" content="no-cache">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Espace Administrateur</title>
@@ -26,7 +27,26 @@
 
   <!--Main CSS File -->
   <link href="css/style.css" rel="stylesheet">
-  
+
+  <style type="text/css">
+    .add_btn{
+          width: 30px;
+          height: 30px;
+          float: right;
+          border: 0;
+          background: transparent;
+    }
+  </style>
+  <script type="text/javascript">
+    function close()
+            {
+              document.getElementById('add_fn').style.display='none';
+            }
+    function affiche()
+            {
+              document.getElementById('add_fn').style.display='block';
+            }
+  </script>
 </head>
 
 <body>
@@ -63,7 +83,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Espace Administrateur</h2>
           <ol>
-            <li><a href="index.html">Administrateur</a></li>
+            <li><a href="espace_admin.php">Administrateur</a></li>
             <li>Fonctionnaires</li>
           </ol>
         </div>
@@ -74,20 +94,59 @@
     <section class="inner-page">
       <div class="container">
         <!-- Search bar -->
-        <div class="row">
-          <dir class="col-xl-11">
+        <div class="row my-3 p-3" style="background-color: rgb(219,226,226);">
+           <div class="col-lg-11">
             <input type="search" class="form-control" placeholder="Chercher un fonctionnaire par nom et prénom" aria-label="Search" aria-describedby="search-addon" style="border-radius: 45px;" />
-                 
-          </dir>
-          <dir class="col-xl-1">
+          </div>
+
+         <div class="col-lg-1">
             <i class="bx bi-search" style="text-align: left;"></i>
-          </dir>
+          </div>
+          
                  
         </div>
         <!-- End Search bar -->
-        <p>
-          Liste Des Fonctionnaires inscrits
-        </p>
+        
+        <!-- Form add FN -->
+        <div class="add_fn" id="add_fn" style="display: none;">
+          <?php include ('add_fn.php'); ?>
+        </div><!-- END -->
+
+        <!-- Liste FNS -->
+      <div class="row">
+
+        <div></div>
+
+        <div class="col-lg-12">
+          
+          <div class="liste_fn ">
+          
+          <table class="table table-striped caption-top">
+            <caption><h3>Fonctionnaires inscrits :</h3><button class="add_btn" onclick="affiche();"><img src="img/add_fn_btn.png" onclick="affiche();" alt="" title="Ajouter un nouveau fonctionnaire" class="add_btn"></button></caption>
+            <tr>
+              <th>Code fonctionnaire</th><th>Nom</th><th>Prénom</th><th>Date d'ambauche</th><th></th></tr>
+            <tr><td>12345</td><td>Hossin</td><td>Driyef</td><td>01/01/2020</td><td><a href="#"><i class="bi bi-trash"></i>&nbsp;&nbsp;&nbsp;</a><a href="#"><i class="bi bi-pencil-square"></i></a></td>
+            </tr>
+            <tr>
+              <td>54321</td><td>Hossin1</td><td>Driyef1</td><td>01/01/2020</td><td><a href="#"><i class="bi bi-trash"></i>&nbsp;&nbsp;&nbsp;</a><a href="#"><i class="bi bi-pencil-square"></i></a></td>
+            </tr>
+             <tr>
+              <td>54321</td><td>Hossin2</td><td>Driyef2</td><td>01/01/2020</td><td><a href="#"><i class="bi bi-trash"></i>&nbsp;&nbsp;&nbsp;</a><a href="#"><i class="bi bi-pencil-square"></i></a></td>
+            </tr>
+            <td>54321</td><td>Hossin3</td><td>Driyef3</td><td>01/01/2020</td><td><a href="#"><i class="bi bi-trash"></i>&nbsp;&nbsp;&nbsp;</a><a href="#"><i class="bi bi-pencil-square"></i></a></td>
+            </tr>
+
+ 
+          </table>
+          
+        </div>
+
+        </div>
+        
+      </div>
+        
+        <!--End Liste FNS -->
+
       </div>
     </section>
 
