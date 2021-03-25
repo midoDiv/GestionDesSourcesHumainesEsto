@@ -69,6 +69,9 @@
     .row-form{
       display: inline;
     }
+    .erreur{
+      color: red;
+    }
   </style>
 </head>
 <body>
@@ -86,29 +89,20 @@
           <form>
             <div class="row ">
 
-              <div class="col-xl-6">
-                <input type="text" class="form-control my-3 p-3" placeholder="Nom" name="">
-                <input type="text" class="form-control my-3 p-3" placeholder="Date de naissance" onfocus="(this.type='date')" name="">
-                </div>
+               <b class="erreur">Code fonctionnaire invalide !</b>
 
-              <div class="col-xl-6">
-                <input type="text" class="form-control my-3 p-3" placeholder="Prénom" name="">
-                <input type="text" class="form-control my-3 p-3" placeholder="Date d'embauche'" onfocus="(this.type='date')" name="">
+                <div class="col-xl-6">
+                <input type="text" class="form-control my-3 p-3" placeholder="Code fonctionnaire" name="">
                 
-                 </div>
-
-
-                  <div class="col-xl-6">
-                <input type="email" class="form-control my-3 p-3" placeholder="Email" name="">
-                <input type="password" class="form-control my-3 p-3" placeholder="Confirmer le mot de passe" name="">
+                <input type="password" class="form-control my-3 p-3" placeholder="Mot de passe" name="">
                 </div>
 
 
                 <div class="col-xl-6">
-                                <input type="tel" class="form-control my-3 p-3" placeholder="Téléphone" name="">
-                                <input type="password" class="form-control my-3 p-3" placeholder="Mot de passe" name="">
-                                
+                                <input type="email" class="form-control my-3 p-3" placeholder="Email" name="">
+                                <input type="password" class="form-control my-3 p-3" placeholder="Confirmer le mot de passe" name="">
                 </div>
+                
 
 
 
