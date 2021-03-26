@@ -91,6 +91,8 @@
                  {
                   var option = document.createElement("option");
                   option.text = pg[i];
+                  option.value=pg[i];
+
                   x.add(option, x[i]);
                  }
                  
@@ -103,6 +105,8 @@
                  {
                   var option = document.createElement("option");
                   option.text = pg[i];
+                  option.value=pg[i];
+
                   x.add(option, x[i]);
                  }
               }
@@ -117,19 +121,19 @@
         <div class="col-lg-12 px-5 py-5">
           <button class="close" ><img src="img/fermer.png" onclick="document.getElementById('add_fn').style.display='none';" class="close"></button> 
           <h4><b>Ajout d'un fonctionnaire</b></h4>
-          <form>
+          <form  action="ajoutFonctionnaire.php"method="post">
             <div class="row ">
 
 
                 <div class="col-xl-4">
                 
-                <input type="text" class="form-control my-3 p-3" placeholder="Nom" name="">
-                <input type="text" class="form-control my-3 p-3" placeholder="Date d'ambauche" name="" onclick="this.type='date'">
+                <input type="text" class="form-control my-3 p-3" placeholder="Nom" name="nom" required>
+                <input type="text" class="form-control my-3 p-3" placeholder="Date d'ambauche" name="date" onclick="this.type='date'" required>
                 </div>
 
 
                 <div class="col-xl-4">
-                                <input type="text" class="form-control my-3 p-3" placeholder="Prénom" name="">
+                                <input type="text" class="form-control my-3 p-3" placeholder="Prénom" name="prenom" required>
                                 <select class="form-control form-select my-3 p-3" name="type" id="type" onmouseout="chech_type();">
 
               
@@ -143,11 +147,11 @@
 
 
                   <div class="col-xl-4">
-                <input type="text" class="form-control my-3 p-3" placeholder="Code fonctionnaire" name="">
-                 <select class="form-control form-select my-3 p-3" name="" id="grade_shell">
-                            <option>PA A</option><option>PA B</option><option>PA C</option><option>PA D</option>
-                            <option>PH A</option><option>PH B</option><option>PH C</option><option>PH D</option>
-                            <option>PES A</option><option>PES B</option><option>PES C</option><option>PES D</option>
+                <input type="text" class="form-control my-3 p-3" placeholder="Code fonctionnaire" name="codeF" required>
+                 <select class="form-control form-select my-3 p-3" name="grade_shell" id="grade_shell">
+                            <option value="PA A">PA A</option><option value="PA B">PA B</option><option value="PA C">PA C</option><option value="PA D">PA D</option>
+                            <option value="PH A">PH A</option><option value="PH B">PH B</option><option value="PH C">PH C</option><option value="PH D">PH D</option>
+                            <option value="PES A">PES A</option><option value="PES B">PES B</option><option value="PES C">PES C</option><option value="PES D"> PES D</option>
                  </select>
                 </div>
                 

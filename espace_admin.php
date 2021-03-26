@@ -1,3 +1,12 @@
+<?php 
+
+
+session_start();
+
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,7 +69,14 @@
 
       <div class="profile">
         <img src="img/signup.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Driyef Lhossin AD</a></h1>
+        <h1 class="text-light"><a href="espace_admin.php"><?php  
+
+              if(isset($_SESSION["nom"]) && isset($_SESSION["prenom"]))
+                echo $_SESSION["nom"]." ".$_SESSION["prenom"];
+
+
+
+         ?></a></h1>
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
@@ -123,19 +139,44 @@
           
           <table class="table table-striped caption-top">
             <caption><h3>Fonctionnaires inscrits :</h3><button class="add_btn" onclick="affiche();"><img src="img/add_fn_btn.png" onclick="affiche();" alt="" title="Ajouter un nouveau fonctionnaire" class="add_btn"></button></caption>
-            <tr>
-              <th>Code fonctionnaire</th><th>Nom</th><th>Prénom</th><th>Date d'ambauche</th><th></th></tr>
-            <tr><td>12345</td><td>Hossin</td><td>Driyef</td><td>01/01/2020</td><td><a href="#"><i class="bi bi-trash"></i>&nbsp;&nbsp;&nbsp;</a><a href="#"><i class="bi bi-pencil-square"></i></a></td>
-            </tr>
-            <tr>
-              <td>54321</td><td>Hossin1</td><td>Driyef1</td><td>01/01/2020</td><td><a href="#"><i class="bi bi-trash"></i>&nbsp;&nbsp;&nbsp;</a><a href="#"><i class="bi bi-pencil-square"></i></a></td>
-            </tr>
-             <tr>
-              <td>54321</td><td>Hossin2</td><td>Driyef2</td><td>01/01/2020</td><td><a href="#"><i class="bi bi-trash"></i>&nbsp;&nbsp;&nbsp;</a><a href="#"><i class="bi bi-pencil-square"></i></a></td>
-            </tr>
-            <td>54321</td><td>Hossin3</td><td>Driyef3</td><td>01/01/2020</td><td><a href="#"><i class="bi bi-trash"></i>&nbsp;&nbsp;&nbsp;</a><a href="#"><i class="bi bi-pencil-square"></i></a></td>
-            </tr>
 
+            <?php 
+
+                $con = mysqli_connect("localhost","root","","pfe");
+
+                $query="select codeF,nom,prenom,dateAmbauche,type from fonctionnaire";
+
+                $result = mysqli_query($con, $query);
+                if (mysqli_num_rows($result) > 0)
+                {
+                  echo "<tr>
+              <th>Code fonctionnaire</th><th>Nom</th><th>Prénom</th><th>Date d'ambauche</th><th>Type</th><th></th></tr>";
+                  while ($row=mysqli_fetch_row($result)) {?>
+                    
+                    <tr><td><?php echo $row[0]; ?></td><td><?php echo $row[1]; ?></td><td><?php echo $row[2]; ?></td><td><?php echo $row[3]; ?></td><td><?php echo $row[4]; ?></td><td><a href="#" onclick="deleteConfirm('<?php echo $row[0]; ?>')"><i class="bi bi-trash" ></i>&nbsp;&nbsp;&nbsp;</a><a href="#"><i class="bi bi-pencil-square"></i></a></td>
+            </tr>
+            <?php 
+             }
+
+                }
+                else
+                  echo "<tr><td>aucun fonctionnaire est ajouté pour le moment </td></tr>";
+
+                mysqli_close($con);
+
+             ?>
+                 
+
+                
+
+
+
+
+
+             
+            
+            
+            
  
           </table>
           
@@ -179,6 +220,15 @@
 
   <!-- Template Main JS File -->
   <script src="js/main.js"></script>
+  <script type="text/javascript">
+    
+    function deleteConfirm(delid)
+    {
+      console.log("hello");
+      if(confirm("est que vous voulez vraiment suprimmer cet utilisateurs ?"))
+        window.location.href="delet-User.php?codeF="+delid;
+    }
+  </script>
   
 
 </body>

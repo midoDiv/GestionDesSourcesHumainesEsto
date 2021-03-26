@@ -11,9 +11,9 @@
    $query="";
 
   if(strval($type)=="1")
-  	$query="select id from administrateur where email='".$email."' and pasword='".$pass."'";
+  	$query="select id,nom,prenom from administrateur where email='".$email."' and pasword='".$pass."'";
   else
-  	 $query="select codeF from ffonctionnaire where email='".$email."' and pass='".$pass."'";
+  	 $query="select codeF,nom,prenom from fonctionnaire where email='".$email."' and pass='".$pass."'";
 
 
   
@@ -33,9 +33,11 @@
 	
 		$row=mysqli_fetch_row($result);
 		$_SESSION["id"]=$row[0];
+		$_SESSION["nom"]=$row[1];
+		$_SESSION["prenom"]=$row[2];
 		
 
-		if(strval($type)==1)
+		if(strval($type)=="1")
 			header("Location:espace_admin.php");
 			
 		else
