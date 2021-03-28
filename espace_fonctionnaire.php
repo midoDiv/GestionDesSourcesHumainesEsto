@@ -1,12 +1,21 @@
+<?php 
+
+
+session_start();
+
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Cache-control" content="no-cache">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-
-  <title>Espace Fonctionnaire</title>
+  <title>Espace Administrateur</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -27,7 +36,93 @@
 
   <!--Main CSS File -->
   <link href="css/style.css" rel="stylesheet">
-  
+
+  <style type="text/css">
+    
+    .close {
+      width: 20px;
+      height: 20px;
+      float: right;
+      border: 0;
+      background: transparent;
+    }
+     .close_r {
+      width: 20px;
+      height: 20px;
+      
+      right: 20px;
+      border: 0;
+      background: transparent;
+    }
+    .table_r > tr{
+            border-radius: 45px;
+    }
+  </style>
+  <script type="text/javascript">
+           function go_to_fn(){
+                       //menu
+                       var element1 = document.getElementById("men1");
+                       element1.classList.add("active");
+                       var element2 = document.getElementById("men2");
+                       element2.classList.remove("active");
+                       var element3 = document.getElementById("men3");
+                       element3.classList.remove("active");
+                       document.getElementById("repert").innerHTML ="Fonctionnaires" ;
+                       //inner
+                       document.getElementById("Profil_page").style.display='none';
+                       document.getElementById("Administrateurs_page").style.display='none';
+                        document.getElementById("Fonctionnaires_page").style.display='block';
+
+                     
+           }           
+
+           function go_to_ad(){
+                
+                       var element1 = document.getElementById("men1");
+                       element1.classList.remove("active");
+                       var element2 = document.getElementById("men2");
+                       element2.classList.add("active");
+                       var element3 = document.getElementById("men3");
+                       element3.classList.remove("active");
+                       document.getElementById("repert").innerHTML ="Grade" ;
+                      
+                       //inner
+                       document.getElementById("Profil_page").style.display='none';
+                       document.getElementById("Fonctionnaires_page").style.display='none';
+                       document.getElementById("Administrateurs_page").style.display='block';
+                      
+                     
+           }
+
+           function go_to_pr(){
+                
+                        var element1 = document.getElementById("men1");
+                       element1.classList.remove("active");
+                       var element2 = document.getElementById("men2");
+                       element2.classList.remove("active");
+                       var element3 = document.getElementById("men3");
+                       element3.classList.add("active");
+                       document.getElementById("repert").innerHTML ="Profil" ;
+
+                       //inner
+                       document.getElementById("Fonctionnaires_page").style.display='none';
+                       document.getElementById("Administrateurs_page").style.display='none';
+                       document.getElementById("Profil_page").style.display='block';
+
+                     
+           }
+
+   function affiche_rsl()
+            {
+              document.getElementById('search_fn').style.display='block';
+            }
+            
+
+
+
+
+
+  </script>
 </head>
 
 <body>
@@ -41,15 +136,22 @@
 
       <div class="profile">
         <img src="img/signup.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Driyef Lhossin FN</a></h1>
+        <h1 class="text-light"><a href="espace_admin.php"><?php  
+
+              if(isset($_SESSION["nom"]) && isset($_SESSION["prenom"]))
+                echo $_SESSION["nom"]." ".$_SESSION["prenom"];
+
+
+
+         ?></a></h1>
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bi-people"></i> <span>Fonctionnaires</span></a></li>
-          <li><a href="#about" class="nav-link scrollto"><i class="bx bi-graph-up "></i> <span>Mon grade</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Profil</span></a></li>
+          <li><a href="#hero" onclick="go_to_fn();" class="nav-link scrollto active" id="men1"><i class="bx bi-people"></i> <span>Fonctionnaires</span></a></li>
+          <li><a href="#about"  onclick="go_to_ad();" class="nav-link scrollto" id="men2"><i class="bx bi-graph-up "></i> <span>Mon grade</span></a></li>
+          <li><a href="#resume" onclick="go_to_pr();" class="nav-link scrollto" id="men3"><i class="bi bi-person-lines-fill"></i> <span>Profil</span></a></li>
           
-          <li><a href="#services" class="nav-link scrollto"><i class="bx bi-box-arrow-in-left"></i> <span>Deconnexion</span></a></li>
+          <li><a href="deconnexion.php" class="nav-link scrollto"><i class="bx bi-box-arrow-in-left"></i> <span>Deconnexion</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>
@@ -64,8 +166,8 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Espace Fonctionnaire</h2>
           <ol>
-            <li><a href="index.html">Fonctionnaire</a></li>
-            <li>Fonctionnaires</li>
+            <li><a href="espace_admin.php">Fonctionnaire</a></li>
+            <li id="repert">Fonctionnaires</li>
           </ol>
         </div>
 
@@ -74,21 +176,149 @@
 
     <section class="inner-page">
       <div class="container">
-        <!-- Search bar -->
-        <div class="row mx-auto">
-          <dir class="col-xl-11">
-            <input type="search" class="form-control" placeholder="Chercher d'autre fonctionnaire par nom et prénom" aria-label="Search" aria-describedby="search-addon" style="border-radius: 45px;" />
-                 
-          </dir>
-          <dir class="col-xl-1">
-            <i class="bx bi-search" style="text-align: left;"></i>
-          </dir>
+
+        <!-- __________________________________________Fonctionnaire page__________________________________________________ -->
+
+        <div class="Fonctionnaires_page" id="Fonctionnaires_page">
+                  <!-- Search bar -->
+        <div class="row my-3 p-3" style="background-color: rgb(219,226,226);">
+           <div class="col-lg-11">
+            <input type="search" class="form-control" placeholder="Chercher un fonctionnaire par nom, prénom, email, grade, échelle..." aria-label="Search" aria-describedby="search-addon" style="border-radius: 45px;" />
+          </div>
+
+         <div class="col-lg-1">
+            <a href="#" onclick="affiche_rsl();"><i class="bx bi-search" style="text-align: left;"></i></a>
+          </div>
+          
                  
         </div>
         <!-- End Search bar -->
-        <p>
-          Liste Des autres Fonctionnaires
-        </p>
+        
+        <!-- Search Results  -->
+           <div class="search_fn" id="search_fn" style="background-color: white;display: none;border-radius: 20px;">
+            <table class="table table-striped caption-top table_r" style="">
+            <caption><b>&nbsp;&nbsp;&nbsp;Vous cherchez "</b>motrecherché<b>"</b><button class="close" ><img src="img/fermer.png" onclick="document.getElementById('search_fn').style.display='none';" title="Fermer" class="close_r"></button></caption>
+
+            <?php 
+
+                $con = mysqli_connect("localhost","root","","pfe");
+
+                $query="select codeF,nom,prenom,dateAmbauche,type,email,grade from fonctionnaire";
+
+                $result = mysqli_query($con, $query);
+                if (mysqli_num_rows($result) > 0)
+                {
+                  echo "<tr>
+              <th>Nom</th><th>Prénom</th><th>Date d'ambauche</th><th>Type</th><th>Grade\Echelle</th><th>Email</th></tr>";
+                  while ($row=mysqli_fetch_row($result)) {?>
+                    
+            <tr>
+                      
+                      <td><?php echo $row[1]; ?></td>
+                      <td><?php echo $row[2]; ?></td>
+                      <td><?php echo $row[3]; ?></td>
+                      <td><?php if($row[4] == 'f'){echo 'Fonctionnaire';}else{echo 'Professeur';} ?></td>
+                      <td><?php echo $row[6]; ?></td><td><?php echo $row[5]; ?></td>
+                      
+            </tr>
+            <?php
+             }
+
+                }
+                else
+                  echo "<tr><td>aucun fonctionnaire a était trouver </td></tr>";
+
+                mysqli_close($con);
+
+             ?>
+             </table>
+             
+           </div>
+        <!-- End Search Results  -->
+        <!-- Form add FN + Form Edit FN -->
+        
+        <!-- END -->
+
+        <!-- Liste FNS -->
+      <div class="row">
+
+        <div></div>
+
+        <div class="col-lg-12">
+          
+          <div class="liste_fn ">
+          
+          <table class="table table-striped caption-top sm-4 ">
+            <caption><b style="font-size: 22px;">Fonctionnaires inscrits</b></caption>
+
+            <?php 
+
+                $con = mysqli_connect("localhost","root","","pfe");
+
+                $query="select codeF,nom,prenom,dateAmbauche,type,email,grade from fonctionnaire";
+
+                $result = mysqli_query($con, $query);
+                if (mysqli_num_rows($result) > 0)
+                {
+                  echo "<tr>
+              <th>Nom</th><th>Prénom</th><th>Date d'ambauche</th><th>Type</th><th>Grade\Echelle</th><th>Email</th></tr>";
+                  while ($row=mysqli_fetch_row($result)) {?>
+                    
+            <tr>
+                     
+                      <td><?php echo $row[1]; ?></td>
+                      <td><?php echo $row[2]; ?></td>
+                      <td><?php echo $row[3]; ?></td>
+                      <td><?php if($row[4] == 'f'){echo 'Fonctionnaire';}else{echo 'Professeur';} ?></td>
+                      <td><?php echo $row[6]; ?></td><td><?php echo $row[5]; ?></td>
+            </tr>
+            <?php
+             }
+
+                }
+                else
+                  echo "<tr><td>aucun fonctionnaire est ajouté pour le moment </td></tr>";
+
+                mysqli_close($con);
+
+             ?>
+                 
+
+          </table>
+          
+        </div>
+
+        </div>
+        
+      </div>
+        
+        <!--End Liste FNS -->
+        </div>
+
+
+        <!-- __________________________________________Grade page__________________________________________________ -->
+      <div class="Administrateurs_page" id="Administrateurs_page" style="display: none;">
+        
+      <?php 
+           
+           if (true) {
+             include ('grade_fn.php'); 
+           }
+
+      
+      ?>
+        
+        <!--End Liste adm -->
+       </div>
+
+           <!-- __________________________________________Profil page__________________________________________________ -->
+     <div id="Profil_page" class="Profil_page" style="display: none;">
+
+       <?php include ('profil_fn.php'); ?>
+
+     </div>
+
+
       </div>
     </section>
 
@@ -119,9 +349,24 @@
   <script src="vendor/typed.js/typed.min.js"></script>
   <script src="vendor/waypoints/noframework.waypoints.js"></script>
 
-  <!-- Template Main JS File -->
+  <!-- Main JS File -->
   <script src="js/main.js"></script>
-   
+  <script type="text/javascript">
+    
+    function deleteConfirm(delid)
+    {
+      console.log("hello");
+      if(confirm("est que vous voulez vraiment suprimmer cet utilisateurs ?"))
+        window.location.href="delet-User.php?codeF="+delid;
+    }
+    function EditForm(editid){
+
+             document.getElementById('add_fn').style.display='none';
+             document.getElementById('edit_fn').style.display='block';
+           
+    }
+  </script>
+  
 
 </body>
 

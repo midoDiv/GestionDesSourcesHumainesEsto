@@ -119,8 +119,8 @@
       <div class="row no-gutters w-60 mx-auto">
        
         <div class="col-lg-12 px-5 py-5">
-          <button class="close" ><img src="img/fermer.png" onclick="document.getElementById('add_fn').style.display='none';" title="Fermer" class="close"></button> 
-          <h4><b>Ajouter un fonctionnaire</b></h4>
+          <button class="close" ><img src="img/fermer.png" onclick="document.getElementById('edit_fn').style.display='none';" title="Fermer" class="close"></button> 
+          <h4><b>Modifier le fonctionnaire</b></h4>
           <form  action="ajoutFonctionnaire.php"method="post">
             <div class="row ">
 
@@ -134,7 +134,7 @@
 
                 <div class="col-xl-4">
                                 <input type="text" class="form-control my-3 p-3" placeholder="Prénom" name="prenom" required>
-                                <select class="form-control form-select my-3 p-3" name="type" id="type" onmouseout="chech_type();">
+                                <select class="form-control form-select my-3 p-3" name="type" id="type" onmouseout="chech_type();" disabled="">
 
               
                                                     <option value="p">Professeur</option>
@@ -147,7 +147,7 @@
 
 
                   <div class="col-xl-4">
-                <input type="text" class="form-control my-3 p-3" placeholder="Code fonctionnaire" name="codeF" required>
+                <input type="text" class="form-control my-3 p-3" placeholder="Code fonctionnaire" name="codeF" disabled="" required>
                  <select class="form-control form-select my-3 p-3" name="grade_shell" id="grade_shell">
                             <option value="PA A">PA A</option><option value="PA B">PA B</option><option value="PA C">PA C</option><option value="PA D">PA D</option>
                             <option value="PH A">PH A</option><option value="PH B">PH B</option><option value="PH C">PH C</option><option value="PH D">PH D</option>
@@ -156,7 +156,7 @@
                 </div>
                 
                 <div class="col-xl-4">
-                <input type="submit" class="form-control my-3 p-3 btn1" value="Créer le compte">
+                <input type="submit" class="form-control my-3 p-3 btn1" value="Modifier le compte">
                 </div>
                 <div class="col-xl-4">
                 <input type="reset" class="form-control my-3 p-3 btn2 " value="Réinitialisr" onclick="chech_type();">
