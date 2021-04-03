@@ -136,7 +136,7 @@ session_start();
 
       <div class="profile">
         <img src="img/signup.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="espace_admin.php"><?php  
+        <h1 class="text-light"><a href="espace_fonctionnaire.php"><?php  
 
               if(isset($_SESSION["nom"]) && isset($_SESSION["prenom"]))
                 echo $_SESSION["nom"]." ".$_SESSION["prenom"];
@@ -300,10 +300,21 @@ session_start();
       <div class="Administrateurs_page" id="Administrateurs_page" style="display: none;">
         
       <?php 
+
+          $con = mysqli_connect("localhost","root","","pfe");
+          $query="select type from fonctionnaire where codeF='".$_SESSION["id"]."'";
+          $result = mysqli_query($con, $query);
            
-           if (true) {
-             include ('grade_fn.php'); 
+           if ($row=mysqli_fetch_row($result)) {
+              if($row[0]=="p")
+                include ('grade_pr.php');
+              else
+                include ('grade_fn.php'); 
            }
+
+           mysqli_close($con);
+
+
 
       
       ?>
@@ -331,7 +342,7 @@ session_start();
         &copy; Copyright <strong><span>ESTO</span></strong>
       </div>
       <div class="credits">
-         Developper par <br><a href="#">Driyef Hossin - Driyef Houssin 2</a>
+         Developper par <br><a href="#">Driyef Hossin - Amine Fadil</a>
       </div>
     </div>
   </footer><!-- End  Footer -->

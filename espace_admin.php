@@ -292,7 +292,7 @@ session_start();
                       <td><?php if($row[4] == 'f'){echo 'Fonctionnaire';}else{echo 'Professeur';} ?></td>
                       <td><?php echo $row[6]; ?></td><td><?php echo $row[5]; ?></td>
                       <td><a href="#" title="Supprimer" onclick="deleteConfirm('<?php echo $row[0]; ?>')"><i class="bi bi-trash" ></i>&nbsp;&nbsp;&nbsp;</a>
-                          <a href="#" title="Modifier" onclick="EditForm('<?php echo $row[0]; ?>')"><i class="bi bi-pencil-square"></i></a> 
+                          <a href="#" title="Modifier" onclick="EditForm('<?php echo $row[0]; ?>','<?php echo $row[1]; ?>','<?php echo $row[2]; ?>','<?php echo $row[3]; ?>')"><i class="bi bi-pencil-square"></i></a> 
                       </td>
             </tr>
             <?php
@@ -362,7 +362,7 @@ session_start();
         &copy; Copyright <strong><span>ESTO</span></strong>
       </div>
       <div class="credits">
-         Developper par <br><a href="#">Driyef Hossin - Driyef Houssin 2</a>
+         Developper par <br><a href="#">Driyef Hossin - Amine Fadil</a>
       </div>
     </div>
   </footer><!-- End  Footer -->
@@ -382,6 +382,7 @@ session_start();
 
   <!-- Main JS File -->
   <script src="js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript">
     
     function deleteConfirm(delid)
@@ -390,10 +391,21 @@ session_start();
       if(confirm("est que vous voulez vraiment suprimmer cet utilisateurs ?"))
         window.location.href="delet-User.php?codeF="+delid;
     }
-    function EditForm(editid){
+    function EditForm(editid,nom,prenom,dateAmbauche){
 
              document.getElementById('add_fn').style.display='none';
              document.getElementById('edit_fn').style.display='block';
+
+             document.getElementById('cof').value=editid;
+             document.getElementById('nom').value=nom;
+             document.getElementById('prenom').value=prenom;
+             document.getElementById('dateAmbauche').value=dateAmbauche;
+            
+             
+            
+           
+
+
            
     }
   </script>

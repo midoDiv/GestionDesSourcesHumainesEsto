@@ -1,3 +1,18 @@
+<?php 
+  //session_start();
+
+  $con = mysqli_connect("localhost","root","","pfe");
+  $query="select codeF,nom,prenom,dateAmbauche,type,email,grade,pass from fonctionnaire where codeF='".$_SESSION["id"]."'";
+  $result = mysqli_query($con, $query);
+
+  if ($row=mysqli_fetch_row($result)) {
+
+
+  
+
+ ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,41 +121,41 @@
           <button class="close5" ><img src="img/edit.png" onclick="modifier();" title="Modifier" class="close5"></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button class="close5" id="annuler" style="display: none;"><img src="img/cancel.png" onclick="annuler();" title="Annuler" class="close5"></button>
           <h4 style=""><b>Mon profile</b></h4>
-          <form  action="ajoutFonctionnaire.php"method="post">
+          <form  action="modifier_fn.php"method="post">
             <div class="row ">
 
 
                 <div class="col-xl-4">
                 
-                <input type="text" class="form-control my-3 p-3" placeholder="Nom" name="nom" required disabled="">
-                <input type="text" class="form-control my-3 p-3" placeholder="Date d'ambauche" name="date" onclick="this.type='date'" disabled="" required>
+                <input type="text" class="form-control my-3 p-3" placeholder="Nom" name="nom" required disabled="" value="<?php  echo $row[1] ; ?>">
+                <input type="text" class="form-control my-3 p-3" placeholder="Date d'ambauche" name="date" onclick="this.type='date'" disabled="" required value="<?php  echo $row[3] ; ?>">
                 </div>
 
 
                 <div class="col-xl-4">
-                                <input type="text" class="form-control my-3 p-3" placeholder="Prénom" name="prenom" disabled="" required>
-                                <input type="text" class="form-control  my-3 p-3" name="type" id="type" value="prof ou fonct" disabled="" >
+                                <input type="text" class="form-control my-3 p-3" placeholder="Prénom" name="prenom" disabled="" required value="<?php  echo $row[2] ; ?>">
+                                <input type="text" class="form-control  my-3 p-3" name="type" id="type"  disabled="" value="<?php  echo $row[4] ; ?>">
                 </div>
                 
 
 
 
                   <div class="col-xl-4">
-                <input type="text" class="form-control my-3 p-3" placeholder="Code fonctionnaire" name="codeF" disabled="" required>
-                 <input type="text" class="form-control my-3 p-3" name="grade_shell" id="grade_shell" value="PA A ou échelle" disabled="">
+                <input type="text" class="form-control my-3 p-3" placeholder="Code fonctionnaire" name="codeF" disabled="" required value="<?php  echo $row[0] ; ?>">
+                 <input type="text" class="form-control my-3 p-3" name="grade_shell" id="grade_shell"  disabled="" value="<?php  echo $row[6] ; ?>">
                 </div>
                 
 
 
 
                   <div class="col-xl-6">
-                <input type="email" class="form-control my-3 p-3" placeholder="Email" name="email" id="email" value="" disabled="" required>
+                <input type="email" class="form-control my-3 p-3" placeholder="Email" name="email" id="email" disabled="" required value="<?php  echo $row[5] ; ?>">
                               
                  
                 </div>
                 <div class="col-xl-6">
                 
-                            <input type="password" class="form-control my-3 p-3" placeholder="*************" name="password" id="password" disabled="" required>
+                            <input type="password" class="form-control my-3 p-3" placeholder="*************" name="password" id="password" disabled="" required value="<?php  echo $row[7] ; }?>">
                  
                 </div>
                 

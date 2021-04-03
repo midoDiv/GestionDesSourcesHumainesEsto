@@ -113,7 +113,7 @@
 						
 					        </div>
 					        <a href="#" >Mot de passe oublié ?</a><br>
-                            <a href="signup_fn.html" >Créer un compte fonctionnaire?</a>
+                            <a href="signup_fn.php" >Créer un compte fonctionnaire?</a>
 
 						
 						</div>

@@ -1,3 +1,20 @@
+<?php 
+
+//session_start();
+
+ $con = mysqli_connect("localhost","root","","pfe");
+  $query="select dateAmbauche,grade from fonctionnaire where codeF='".$_SESSION["id"]."'";
+  $result = mysqli_query($con, $query);
+
+  if ($row=mysqli_fetch_row($result)) {
+     
+
+
+
+
+
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -158,9 +175,9 @@
 
         <!-- Liste FNS -->
       <div class="row my-3 p-3" style="text-align: left;">
-      <h5 style="color: gray;">GRADE : <b >Echelle 8</b></h5>
+      <h5 style="color: gray;">GRADE : <b id="grade"><?php echo $row[1]; ?></b></h5>
       <div class="col-lg-12 progress my-0 p-0" style="background-color: lightgray; height: 50px; border-radius: 45px;">
-              <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="8.33" aria-valuemin="0" aria-valuemax="100" style="width: 16.66%; border-radius: 45px;"><b style="color: white;font-size: 18px;">1ére années</b></div>
+              <div id="pb" class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="8.33" aria-valuemin="0" aria-valuemax="100" style="width: 16.66%; border-radius: 45px;"><b id="year"style="color: white;font-size: 18px;">1ére années</b></div>
       </div>
 
         
@@ -181,7 +198,7 @@
 
         <div class="e8">
           <b class="wth">ECHELLE 8 &nbsp;</b>
-          <div class="spinner-border text-light" role="status" style=" float: right;">
+          <div id="sp1" class="spinner-border text-light" role="status" style=" float: right;">
                 <span class="visually-hidden" id="paa"></span>
           </div>
         </div>
@@ -192,7 +209,7 @@
 
         <div class="e9">
           <b class="wth">ECHELLE 9 &nbsp;</b>
-          <div class="spinner-border text-light" role="status" style=" float: right;display: none;">
+          <div id="sp2" class="spinner-border text-light" role="status" style=" float: right;display: none;">
                 <span class="visually-hidden" id="paa"></span>
           </div>
         </div>
@@ -203,7 +220,7 @@
 
         <div class="e10">
           <b class="wth">ECHELLE 10</b>
-          <div class="spinner-border text-light" role="status" style=" float: right;display: none;">
+          <div id="sp3" class="spinner-border text-light" role="status" style=" float: right;display: none;">
                 <span class="visually-hidden" id="paa"></span>
           </div>
         </div>
@@ -214,7 +231,7 @@
 
         <div class="e11">
           <b class="wth">ECHELLE 11</b>
-          <div class="spinner-border text-light" role="status" style=" float: right;display: none;">
+          <div id="sp4"class="spinner-border text-light" role="status" style=" float: right;display: none;">
                 <span class="visually-hidden" id="paa"></span>
           </div>
         </div>
@@ -222,6 +239,275 @@
       </div>
 
 </div>
+
+
+<?php 
+
+      $date_1 = new DateTime( $row[0] );
+      $date_2 = new DateTime( date( 'Y-m-d' ) );
+      $difference = $date_2->diff( $date_1 );
+
+      
+
+      if((string)$difference->y>=0)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='16.66%';
+          document.getElementById('year').innerHTML='1ére année';
+          document.getElementById('sp4').style.display='none';
+          document.getElementById('sp1').style.display='block';
+          document.getElementById('grade').innerHTML='échelle 8';
+
+          
+          </script>";
+
+          
+          
+           $query="update fonctionnaire set grade='"."échelle 8"."' where codeF='".$_SESSION["id"]."'";
+         mysqli_query($con, $query);
+
+      }
+      if((string)$difference->y>=1)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='33.32%';
+          document.getElementById('year').innerHTML='2éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=2)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='49.98%';
+          document.getElementById('year').innerHTML='3éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=3)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='66.64%';
+          document.getElementById('year').innerHTML='4éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=4)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='83.3%';
+          document.getElementById('year').innerHTML='5éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=5)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='100%';
+          document.getElementById('year').innerHTML='6éme année';
+          
+          </script>";
+
+      }
+
+      //??????????????????? KTAB HNA NORTIFICATION AWLD L9HBA 
+
+       if((string)$difference->y>=6)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='16.66%';
+          document.getElementById('year').innerHTML='1ére année';
+          document.getElementById('sp1').style.display='none';
+          document.getElementById('sp2').style.display='block';
+          document.getElementById('grade').innerHTML='échelle 9';
+          
+          </script>";
+           $query="update fonctionnaire set grade='"."échelle 9"."' where codeF='".$_SESSION["id"]."'";
+         mysqli_query($con, $query);
+
+      }
+      if((string)$difference->y>=7)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='33.32%';
+          document.getElementById('year').innerHTML='2éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=8)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='49.98%';
+          document.getElementById('year').innerHTML='3éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=9)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='66.64%';
+          document.getElementById('year').innerHTML='4éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=10)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='83.3%';
+          document.getElementById('year').innerHTML='5éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=11)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='100%';
+          document.getElementById('year').innerHTML='6éme année';
+          
+          </script>";
+
+      }
+      //??????????????????? KTAB HNA NORTIFICATION AWLD L9HBA 
+
+       if((string)$difference->y>=12)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='16.66%';
+          document.getElementById('year').innerHTML='1ére année';
+          document.getElementById('sp2').style.display='none';
+          document.getElementById('sp3').style.display='block';
+          document.getElementById('grade').innerHTML='échelle 10';
+          
+          </script>";
+           $query="update fonctionnaire set grade='"."échelle 10"."' where codeF='".$_SESSION["id"]."'";
+         mysqli_query($con, $query);
+
+      }
+      if((string)$difference->y>=13)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='33.32%';
+          document.getElementById('year').innerHTML='2éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=14)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='49.98%';
+          document.getElementById('year').innerHTML='3éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=15)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='66.64%';
+          document.getElementById('year').innerHTML='4éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=16)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='83.3%';
+          document.getElementById('year').innerHTML='5éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=17)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='100%';
+          document.getElementById('year').innerHTML='6éme année';
+          
+          </script>";
+
+      }
+      //??????????????????? KTAB HNA NORTIFICATION AWLD L9HBA 
+
+       if((string)$difference->y>=18)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='16.66%';
+          document.getElementById('year').innerHTML='1ére année';
+          document.getElementById('sp3').style.display='none';
+          document.getElementById('sp4').style.display='block';
+          document.getElementById('grade').innerHTML='échelle 11';
+          
+          </script>";
+           $query="update fonctionnaire set grade='"."échelle 11"."' where codeF='".$_SESSION["id"]."'";
+         mysqli_query($con, $query);
+
+      }
+      if((string)$difference->y>=19)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='33.32%';
+          document.getElementById('year').innerHTML='2éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=20)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='49.98%';
+          document.getElementById('year').innerHTML='3éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=21)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='66.64%';
+          document.getElementById('year').innerHTML='4éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=22)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='83.3%';
+          document.getElementById('year').innerHTML='5éme année';
+          
+          </script>";
+
+      }
+      if((string)$difference->y>=23)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='100%';
+          document.getElementById('year').innerHTML='6éme année';
+          
+          </script>";
+
+      }
+
+           
+
+
+
+
+
+           }
+
+
+
+ ?>
 
 
 

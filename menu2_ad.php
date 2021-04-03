@@ -61,6 +61,7 @@
             {
 
               document.getElementById('search_a').style.display='block';
+              document.getElementById('motrecherch').innerHTML=document.getElementById('chercher').value;
             }
             function affichea()
             {
@@ -77,7 +78,7 @@
 	  <!-- Search bar -->
         <div class="row my-3 p-3" style="background-color: rgb(219,226,226);">
            <div class="col-lg-11">
-            <input type="search" class="form-control" placeholder="Chercher un administrateur par nom, prénom, email, échelle..." aria-label="Search" aria-describedby="search-addon" style="border-radius: 45px;" />
+            <input id="chercher" type="search" class="form-control" placeholder="Chercher un administrateur par nom, prénom, email..." aria-label="Search" aria-describedby="search-addon" style="border-radius: 45px;" required />
           </div>
 
          <div class="col-lg-1">
@@ -94,7 +95,7 @@
         </div>
            <div class="search_a" id="search_a" style="background-color: white;border-radius: 20px;display: none;">
             <table class="table table-striped caption-top" style="">
-            <caption><b>&nbsp;&nbsp;&nbsp;Vous cherchez "</b>motrecherché<b>"</b><button class="close" ><img src="img/fermer.png" onclick="document.getElementById('search_a').style.display='none';" title="Fermer" class="close_r"></button></h6></caption>
+            <caption><b>&nbsp;&nbsp;&nbsp;Vous cherchez "</b id="motrecherch"></b>"</b><button class="close" ><img src="img/fermer.png" onclick="document.getElementById('search_a').style.display='none';" title="Fermer" class="close_r"></button></h6></caption>
 
             <?php 
 
@@ -157,13 +158,13 @@
 
                 $con = mysqli_connect("localhost","root","","pfe");
 
-                $query="select codeF,nom,prenom,dateAmbauche,type,email,grade from fonctionnaire";
+                $query="select id,nom,prenom,dateAmbauche,email from administrateur";
 
                 $result = mysqli_query($con, $query);
                 if (mysqli_num_rows($result) > 0)
                 {
                   echo "<tr>
-              <th>ID administrateur</th><th>Nom</th><th>Prénom</th><th>Date d'ambauche</th><th>Echelle</th><th>Email</th></tr>";
+              <th>ID administrateur</th><th>Nom</th><th>Prénom</th><th>Date d'ambauche</th><th>Email</th></tr>";
                   while ($row=mysqli_fetch_row($result)) {?>
                     
             <tr>
@@ -171,8 +172,9 @@
                       <td><?php echo $row[1]; ?></td>
                       <td><?php echo $row[2]; ?></td>
                       <td><?php echo $row[3]; ?></td>
+                      <td><?php echo $row[4]; ?></td>
                       
-                      <td><?php echo $row[6]; ?></td><td><?php echo $row[5]; ?></td>
+                      
                       
             </tr>
             <?php
@@ -180,7 +182,7 @@
 
                 }
                 else
-                  echo "<tr><td>aucun fonctionnaire est ajouté pour le moment </td></tr>";
+                  echo "<tr><td>aucun admin est ajouté pour le moment </td></tr>";
 
                 mysqli_close($con);
 

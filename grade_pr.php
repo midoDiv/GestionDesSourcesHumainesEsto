@@ -1,3 +1,21 @@
+<?php 
+
+//session_start();
+
+ $con = mysqli_connect("localhost","root","","pfe");
+  $query="select dateAmbauche,grade from fonctionnaire where codeF='".$_SESSION["id"]."'";
+  $result = mysqli_query($con, $query);
+
+  if ($row=mysqli_fetch_row($result)) {
+     
+
+
+
+
+
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,9 +136,9 @@
 
         <!-- Liste FNS -->
       <div class="row my-3 p-3" style="text-align: left;">
-      <h5 style="color: gray;">GRADE : <b >PA A</b></h5>
-      <div class="col-lg-12 progress my-0 p-0" style="background-color: lightgray; height: 50px; border-radius: 45px;">
-              <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="8.33" aria-valuemin="0" aria-valuemax="100" style="width: 16.66%; border-radius: 45px;"><b style="color: white;font-size: 18px;">1ére années</b></div>
+      <h5  style="color: gray;">GRADE : <b id="grade" ><?php echo $row[1]; ?></b></h5>
+      <div  class="col-lg-12 progress my-0 p-0" style="background-color: lightgray; height: 50px; border-radius: 45px;">
+              <div id="pb" class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="8.33" aria-valuemin="0" aria-valuemax="100" style="width: 16.66%; border-radius: 45px;"><b id="year" style="color: white;font-size: 18px;">1ére années</b></div>
       </div>
 
         
@@ -140,25 +158,25 @@
       <div class="col-xl-4">
         <div class="gradepa">
           <b class="wth">PA A</b>
-          <div class="spinner-border text-light" role="status" style=" float: right;">
+          <div id="sp1"class="spinner-border text-light" role="status" style=" float: right;">
                 <span class="visually-hidden" id="paa"></span>
           </div>
         </div>
         <div class="gradepa">
           <b class="wth">PA B</b>
-          <div class="spinner-border text-light" role="status" style="display: none; float: right;">
+          <div id="sp2" class="spinner-border text-light" role="status" style="display: none; float: right;">
                 <span class="visually-hidden" id="pab"></span>
           </div>
         </div>
         <div class="gradepa">
           <b class="wth">PA C</b>
-          <div class="spinner-border text-light" role="status" style="display: none; float: right;">
+          <div id="sp3"class="spinner-border text-light" role="status" style="display: none; float: right;">
                 <span class="visually-hidden" id="pac"></span>
           </div>
         </div>
         <div class="gradepa">
           <b class="wth">PA D</b>
-          <div class="spinner-border text-light" role="status" style="display: none; float: right;">
+          <div id="sp4"class="spinner-border text-light" role="status" style="display: none; float: right;">
                 <span class="visually-hidden" id="pad"></span>
           </div>
         </div>
@@ -176,25 +194,25 @@
       <div class="col-xl-4">
         <div class="gradeph">
           <b class="wth">PH A</b>
-          <div class="spinner-border text-light" role="status" style="display: none; float: right;">
+          <div id="sp5"class="spinner-border text-light" role="status" style="display: none; float: right;">
                 <span class="visually-hidden" id="pha" ></span>
           </div>
         </div>
         <div class="gradeph">
           <b class="wth">PH B</b>
-          <div class="spinner-border text-light" role="status" style="display: none; float: right;">
+          <div id="sp6"class="spinner-border text-light" role="status" style="display: none; float: right;">
                 <span class="visually-hidden" id="phb" ></span>
           </div>
         </div>
         <div class="gradeph">
           <b class="wth">PH C</b>
-          <div class="spinner-border text-light" role="status" style="display: none; float: right;">
+          <div id="sp7"class="spinner-border text-light" role="status" style="display: none; float: right;">
                 <span class="visually-hidden" id="phc" ></span>
           </div>
         </div>
         <div class="gradeph">
           <b class="wth">PH D</b>
-          <div class="spinner-border text-light" role="status" style="display: none; float: right;">
+          <div id="sp8" class="spinner-border text-light" role="status" style="display: none; float: right;">
                 <span class="visually-hidden" id="phd" ></span>
           </div>
         </div>
@@ -205,25 +223,25 @@
       <div class="col-xl-4">
         <div class="gradepes">
           <b class="wth">PES A</b>
-          <div class="spinner-border text-light" role="status"  style="display: none; float: right;">
+          <div id="sp9" class="spinner-border text-light" role="status"  style="display: none; float: right;">
                 <span class="visually-hidden" id="pesa"></span>
           </div>
         </div>
         <div class="gradepes">
           <b class="wth">PES B</b>
-          <div class="spinner-border text-light" role="status"  style="display: none; float: right;">
+          <div id="sp10"class="spinner-border text-light" role="status"  style="display: none; float: right;">
                 <span class="visually-hidden" id="pesb"></span>
           </div>
         </div>
         <div class="gradepes">
           <b class="wth">PES C</b>
-          <div class="spinner-border text-light" role="status"  style="display: none; float: right;">
+          <div id="sp11"class="spinner-border text-light" role="status"  style="display: none; float: right;">
                 <span class="visually-hidden" id="pesc"></span>
           </div>
         </div>
         <div class="gradepes">
           <b class="wth">PES D</b>
-          <div class="spinner-border text-light" role="status"  style="display: none; float: right;">
+          <div id="sp12"class="spinner-border text-light" role="status"  style="display: none; float: right;">
                 <span class="visually-hidden" id="pesd"></span>
           </div>
         </div>
@@ -231,7 +249,239 @@
 </div>
 
 
+<?php 
 
+      $date_1 = new DateTime( $row[0] );
+      $date_2 = new DateTime( date( 'Y-m-d' ) );
+      $difference = $date_2->diff( $date_1 );
+
+      
+
+      if((string)$difference->y>=0)
+      {
+        echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='16.66%';
+          document.getElementById('sp1').style.display='block';
+          document.getElementById('year').innerHTML='1ére année';
+          document.getElementById('grade').innerHTML='PA A';
+          </script>";
+           $query="update fonctionnaire set grade='"."PA A"."' where codeF='".$_SESSION["id"]."'";
+         mysqli_query($con, $query);
+      }
+      
+      if((string)$difference->y>=1)
+      {
+
+        echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='33.32%';
+          document.getElementById('year').innerHTML='2éme année';
+         
+        </script>";
+       
+
+      }
+
+         
+
+      if((string)$difference->y>=2)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='49.98%';
+           document.getElementById('year').innerHTML='3éme année';
+            document.getElementById('grade').innerHTML='PA B';
+             document.getElementById('sp1').style.display='none';
+          document.getElementById('sp2').style.display='block';
+
+        </script>";
+         $query="update fonctionnaire set grade='"."PA B"."' where codeF='".$_SESSION["id"]."'";
+        mysqli_query($con, $query);
+      }
+
+        
+      if((string)$difference->y>=3)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='66.64%';
+           document.getElementById('year').innerHTML='4éme année';
+            document.getElementById('grade').innerHTML='PA C';
+             document.getElementById('sp2').style.display='none';
+          document.getElementById('sp3').style.display='block';
+
+      </script>";
+       $query="update fonctionnaire set grade='"."PA C"."' where codeF='".$_SESSION["id"]."'";
+        mysqli_query($con, $query);
+      }
+
+        
+      if((string)$difference->y>=4)
+      {
+        echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='83.3%';
+           document.getElementById('year').innerHTML='5éme année';
+            document.getElementById('grade').innerHTML='PA D';
+             document.getElementById('sp3').style.display='none';
+          document.getElementById('sp4').style.display='block';
+
+      </script>";
+         $query="update fonctionnaire set grade='"."PA D"."' where codeF='".$_SESSION["id"]."'";
+        mysqli_query($con, $query);
+      }
+
+         
+      if((string)$difference->y>=5)
+      {
+        echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='100%';
+           document.getElementById('year').innerHTML='6éme année';
+
+      </script>";
+      }
+      //??????????????????? KTAB HNA NORTIFICATION AWLD L9HBA 
+      if((string)$difference->y>=6)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='16.66%';
+          document.getElementById('sp4').style.display='none';
+          document.getElementById('sp5').style.display='block';
+          document.getElementById('year').innerHTML='1ére année';
+          document.getElementById('grade').innerHTML='PH A';
+          </script>";
+           $query="update fonctionnaire set grade='"."PH A"."' where codeF='".$_SESSION["id"]."'";
+         mysqli_query($con, $query);
+      }
+      if((string)$difference->y>=7)
+      {
+        echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='33.32%';
+          document.getElementById('year').innerHTML='2éme année';
+         
+        </script>";
+      }
+
+      if((string)$difference->y>=8)
+      {
+        echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='49.98%';
+           document.getElementById('year').innerHTML='3éme année';
+            document.getElementById('grade').innerHTML='PH B';
+             document.getElementById('sp5').style.display='none';
+          document.getElementById('sp6').style.display='block';
+
+        </script>";
+         $query="update fonctionnaire set grade='"."PH B"."' where codeF='".$_SESSION["id"]."'";
+        mysqli_query($con, $query);
+      }
+      if((string)$difference->y>=9)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='66.64%';
+           document.getElementById('year').innerHTML='4éme année';
+            document.getElementById('grade').innerHTML='PH C';
+             document.getElementById('sp6').style.display='none';
+          document.getElementById('sp7').style.display='block';
+
+      </script>";
+       $query="update fonctionnaire set grade='"."PH C"."' where codeF='".$_SESSION["id"]."'";
+        mysqli_query($con, $query);
+      }
+      if((string)$difference->y>=10)
+      {
+        echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='83.3%';
+           document.getElementById('year').innerHTML='5éme année';
+            document.getElementById('grade').innerHTML='PH D';
+             document.getElementById('sp7').style.display='none';
+          document.getElementById('sp8').style.display='block';
+
+      </script>";
+         $query="update fonctionnaire set grade='"."PH D"."' where codeF='".$_SESSION["id"]."'";
+        mysqli_query($con, $query);
+      }
+      if((string)$difference->y>=11)
+      {
+        echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='100%';
+           document.getElementById('year').innerHTML='6éme année';
+
+      </script>";
+      }
+      //??????????????????? KTAB HNA NORTIFICATION AWLD L9HBA 
+      if((string)$difference->y>=12)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='16.66%';
+          document.getElementById('sp8').style.display='none';
+          document.getElementById('sp9').style.display='block';
+          document.getElementById('year').innerHTML='1ére année';
+          document.getElementById('grade').innerHTML='PES A';
+          </script>";
+           $query="update fonctionnaire set grade='"."PES A"."' where codeF='".$_SESSION["id"]."'";
+         mysqli_query($con, $query);
+      }
+      if((string)$difference->y>=13)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='33.32%';
+          document.getElementById('year').innerHTML='2éme année';
+         
+        </script>";
+      }
+      if((string)$difference->y>=14)
+      {
+         echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='49.98%';
+           document.getElementById('year').innerHTML='3éme année';
+            document.getElementById('grade').innerHTML='PES B';
+             document.getElementById('sp9').style.display='none';
+          document.getElementById('sp10').style.display='block';
+
+        </script>";
+         $query="update fonctionnaire set grade='"."PES B"."' where codeF='".$_SESSION["id"]."'";
+        mysqli_query($con, $query);
+      }
+      if((string)$difference->y>=15)
+      {
+        echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='66.64%';
+           document.getElementById('year').innerHTML='4éme année';
+            document.getElementById('grade').innerHTML='PES C';
+             document.getElementById('sp10').style.display='none';
+          document.getElementById('sp11').style.display='block';
+
+      </script>";
+       $query="update fonctionnaire set grade='"."PES C"."' where codeF='".$_SESSION["id"]."'";
+        mysqli_query($con, $query);
+      }
+      if((string)$difference->y>=16)
+      {
+        echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='83.3%';
+           document.getElementById('year').innerHTML='5éme année';
+            document.getElementById('grade').innerHTML='PES D';
+             document.getElementById('sp11').style.display='none';
+          document.getElementById('sp12').style.display='block';
+
+      </script>";
+         $query="update fonctionnaire set grade='"."PES D"."' where codeF='".$_SESSION["id"]."'";
+        mysqli_query($con, $query);
+      }
+      if((string)$difference->y>=17)
+      {
+        echo "<script type='text/javascript'>
+          document.getElementById('pb').style.width='100%';
+           document.getElementById('year').innerHTML='6éme année';
+
+      </script>";
+      }
+
+         
+      
+
+      }
+
+
+
+ ?>
 
 
         

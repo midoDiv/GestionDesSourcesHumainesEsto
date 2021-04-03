@@ -74,43 +74,7 @@
   </style>
 
   <script type="text/javascript">
-    function chech_type()
-            {
-              var select = document.getElementById("grade_shell");
-               var length = select.options.length;
-               for (i = length-1; i >= 0; i--) {
-                 select.options[i] = null;
-               }
-               let type = document.getElementById('type').value;
-              if (type == "p")
-              {
-                let pg = new Array('PA A','PA B','PA C','PA D','PH A','PH B','PH C','PH D','PES A','PES B','PES C','PES D');
-                 var x = document.getElementById("grade_shell");
-                 
-                 for(i=0; i<pg.length;i++)
-                 {
-                  var option = document.createElement("option");
-                  option.text = pg[i];
-                  option.value=pg[i];
-
-                  x.add(option, x[i]);
-                 }
-                 
-              }
-              else{
-                let pg = new Array('échelle 8','échelle 9','échelle 10','échelle 11');
-                 var x = document.getElementById("grade_shell");
-                 
-                 for(i=0; i<pg.length;i++)
-                 {
-                  var option = document.createElement("option");
-                  option.text = pg[i];
-                  option.value=pg[i];
-
-                  x.add(option, x[i]);
-                 }
-              }
-            }
+   
   </script>
 </head>
 <body>
@@ -121,25 +85,20 @@
         <div class="col-lg-12 px-5 py-5">
           <button class="close" ><img src="img/fermer.png" onclick="document.getElementById('edit_fn').style.display='none';" title="Fermer" class="close"></button> 
           <h4><b>Modifier le fonctionnaire</b></h4>
-          <form  action="ajoutFonctionnaire.php"method="post">
+          <form   method="post" action="modif_fn.php">
             <div class="row ">
 
 
                 <div class="col-xl-4">
                 
-                <input type="text" class="form-control my-3 p-3" placeholder="Nom" name="nom" required>
-                <input type="text" class="form-control my-3 p-3" placeholder="Date d'ambauche" name="date" onclick="this.type='date'" required>
+                <input id="nom" type="text" class="form-control my-3 p-3" placeholder="Nom" name="nom" required>
+                <input id="dateAmbauche"type="date" class="form-control my-3 p-3" placeholder="Date d'ambauche" name="date" required>
                 </div>
 
 
                 <div class="col-xl-4">
-                                <input type="text" class="form-control my-3 p-3" placeholder="Prénom" name="prenom" required>
-                                <select class="form-control form-select my-3 p-3" name="type" id="type" onmouseout="chech_type();" disabled="">
-
-              
-                                                    <option value="p">Professeur</option>
-                                                    <option value="f">Fonctionnaire</option>
-                                                  </select>
+                                <input id="prenom"type="text" class="form-control my-3 p-3" placeholder="Prénom" name="prenom" required>
+                                
                                 
                 </div>
                 
@@ -147,19 +106,16 @@
 
 
                   <div class="col-xl-4">
-                <input type="text" class="form-control my-3 p-3" placeholder="Code fonctionnaire" name="codeF" disabled="" required>
-                 <select class="form-control form-select my-3 p-3" name="grade_shell" id="grade_shell">
-                            <option value="PA A">PA A</option><option value="PA B">PA B</option><option value="PA C">PA C</option><option value="PA D">PA D</option>
-                            <option value="PH A">PH A</option><option value="PH B">PH B</option><option value="PH C">PH C</option><option value="PH D">PH D</option>
-                            <option value="PES A">PES A</option><option value="PES B">PES B</option><option value="PES C">PES C</option><option value="PES D"> PES D</option>
-                 </select>
+                <input readonly id="cof" type="text" class="form-control my-3 p-3" placeholder="Code fonctionnaire" name="codeF" 
+                 required >
+                
                 </div>
                 
                 <div class="col-xl-4">
                 <input type="submit" class="form-control my-3 p-3 btn1" value="Modifier le compte">
                 </div>
                 <div class="col-xl-4">
-                <input type="reset" class="form-control my-3 p-3 btn2 " value="Réinitialisr" onclick="chech_type();">
+                <input type="reset" class="form-control my-3 p-3 btn2 " value="Réinitialisr" >
                 </div>
                 
             
