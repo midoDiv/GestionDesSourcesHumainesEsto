@@ -15,7 +15,7 @@ session_start();
   <meta http-equiv="Cache-control" content="no-cache">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Espace Administrateur</title>
+  <title>Espace Fonctionnaire</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -59,6 +59,9 @@ session_start();
     }
   </style>
   <script type="text/javascript">
+    /*window.addEventListener('load', function() {
+                                                          document.write('<div class="toast" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><img src="..." class="rounded me-2" alt="..."><strong class="me-auto">Bootstrap</strong><small>11 mins ago</small><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button</div><div class="toast-body">Hello, world! This is a toast message.</div></div>');
+                                                        });*/
            function go_to_fn(){
                        //menu
                        var element1 = document.getElementById("men1");

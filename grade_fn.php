@@ -1,5 +1,5 @@
 <?php 
-
+ 
 //session_start();
 
  $con = mysqli_connect("localhost","root","","pfe");
@@ -193,7 +193,7 @@
 
       <div class="row my-3 p-3" style="text-align: center;">
       <b style="font-size: 22px;">A propos des grade disponiples sur <i>L’Ecole Supérieure de Technologie - Oujda</i></b><br>
-<div class="row  p-3" style="text-align: center;">
+<div class="row  p-3" id="fn_to" style="text-align: center;">
       <div class="col-xl-12">
 
         <div class="e8">
@@ -259,7 +259,17 @@
           document.getElementById('grade').innerHTML='échelle 8';
 
           
-          </script>";
+          </script>"+"<div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>
+  <div class='toast-header'>
+    <img src='...' class='rounded me-2' alt='...'>
+    <strong class='me-auto'>Bootstrap</strong>
+    <small>11 mins ago</small>
+    <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+  </div>
+  <div class='toast-body'>
+    Hello, world! This is a toast message.
+  </div>
+</div>";
 
           
           

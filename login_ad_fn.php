@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Page de connexion - Administrateur</title>
+	<title>Page de connexion</title>
 	<meta charset="utf-8">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 	<style type="text/css">
@@ -112,7 +112,7 @@
 								<input type="submit" name="" value="Se connecter" class="btn1"> 
 						
 					        </div>
-					        <a href="#" >Mot de passe oublié ?</a><br>
+					        <a href="update_password.php" >Mot de passe oublié ?</a><br>
                             <a href="signup_fn.php" >Créer un compte fonctionnaire?</a>
 
 						

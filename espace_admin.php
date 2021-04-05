@@ -65,6 +65,8 @@ session_start();
     }
   </style>
   <script type="text/javascript">
+
+    
            function go_to_fn(){
                        //menu
                        var element1 = document.getElementById("men1");
@@ -262,13 +264,13 @@ session_start();
         <!-- Liste FNS -->
       <div class="row">
 
-        <div></div>
+
 
         <div class="col-lg-12">
           
           <div class="liste_fn ">
           
-          <table class="table table-striped caption-top sm-4 ">
+          <table class="table table-striped caption-top">
             <caption><b style="font-size: 22px;">Fonctionnaires inscrits</b><button class="add_btn" onclick="affiche();"><img src="img/add_fn_btn.png" onclick="affiche();" alt="" title="Ajouter un nouveau fonctionnaire" class="add_btn"></button></caption>
 
             <?php 
@@ -280,7 +282,7 @@ session_start();
                 $result = mysqli_query($con, $query);
                 if (mysqli_num_rows($result) > 0)
                 {
-                  echo "<tr>
+                  echo "<tr >
               <th>Code fonctionnaire</th><th>Nom</th><th>Prénom</th><th>Date d'ambauche</th><th>Type</th><th>Grade\Echelle</th><th>Email</th><th></th></tr>";
                   while ($row=mysqli_fetch_row($result)) {?>
                     

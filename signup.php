@@ -24,7 +24,7 @@
 			 	 else
 			 	 {
 
-		   			 $query="select codeF,nom,prenom from fonctionnaire where codeF='".$codeF."' and email is null and pass is null";
+		   			 $query="select codeF,nom,prenom from fonctionnaire where codeF='".$codeF."' and email='Pas encore ajouté' and pass is null";
 
 		   			 $result=mysqli_query($con,$query);
 
