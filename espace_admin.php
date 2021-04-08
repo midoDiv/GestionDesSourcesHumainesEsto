@@ -130,6 +130,7 @@ session_start();
             {
               document.getElementById('add_fn').style.display='none';
               document.getElementById('edit_fn').style.display='none';
+              document.getElementById("mtChercher").innerHTML=document.getElementById("barRech").value;
               document.getElementById('search_fn').style.display='block';
             }
 
@@ -198,7 +199,7 @@ session_start();
                   <!-- Search bar -->
         <div class="row my-3 p-3" style="background-color: rgb(219,226,226);">
            <div class="col-lg-11">
-            <input type="search" class="form-control" placeholder="Chercher un fonctionnaire par nom, prénom, email, grade, échelle..." aria-label="Search" aria-describedby="search-addon" style="border-radius: 45px;" />
+            <input id="barRech"type="search" class="form-control" placeholder="Chercher un fonctionnaire par nom, prénom, email, grade, échelle..." aria-label="Search" aria-describedby="search-addon" style="border-radius: 45px;" />
           </div>
 
          <div class="col-lg-1">
@@ -212,7 +213,8 @@ session_start();
         <!-- Search Results  -->
            <div class="search_fn" id="search_fn" style="background-color: white;display: none;border-radius: 20px;">
             <table class="table table-striped caption-top table_r" style="">
-            <caption><b>&nbsp;&nbsp;&nbsp;Vous cherchez "</b>motrecherché<b>"</b><button class="close" ><img src="img/fermer.png" onclick="document.getElementById('search_fn').style.display='none';" title="Fermer" class="close_r"></button></caption>
+            <caption><b>&nbsp;&nbsp;&nbsp;Vous cherchez "</b><b id="mtChercher">motrecherché</b><b>"</b><button class="close" ><img src="img/fermer.png" onclick="document.getElementById('search_fn').style.display='none';" title="Fermer" class="close_r"></button></caption>
+
 
             <?php 
 
@@ -221,6 +223,7 @@ session_start();
                 $query="select codeF,nom,prenom,dateAmbauche,type,email,grade from fonctionnaire";
 
                 $result = mysqli_query($con, $query);
+                
                 if (mysqli_num_rows($result) > 0)
                 {
                   echo "<tr>

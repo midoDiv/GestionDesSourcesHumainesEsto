@@ -11,6 +11,7 @@
 <head>
 	<title>Page de réstoration de mot de passe</title>
 	<meta charset="utf-8">
+	
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 	<style type="text/css">
 		*{
@@ -123,7 +124,7 @@
               					        <div class="col-xl-12 my-3 ">
               					        	<div class="row">
               					                 		<div class="col-xl-6">
-              					                 		<input type="submit" name="" value="Suivant" class="btn1 my-1" onclick="check_em();">
+              					                 		<input type="submit" name="" value="Suivant" class="btn1 my-1" onclick="check_em()">
               					                 	</div>
               					                 	<div class="col-xl-6">
               					                 		<button class="btn2 my-1" onclick="cancel();">Annuler</button>
@@ -250,14 +251,18 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+ 
  <script type="text/javascript">
          window.history.forward();
         function noBack() {
             window.history.forward();
         }
          
+         
 
          function check_em(){
+         	
+         			
                        document.getElementById("check_email").style.display='none';
                         document.getElementById("check_code").style.display='block';
          }

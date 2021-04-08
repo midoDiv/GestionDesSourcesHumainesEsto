@@ -85,7 +85,7 @@
         <div class="col-lg-12 px-5 py-5">
           <button class="close" ><img src="img/fermer.png" onclick="document.getElementById('add_ad').style.display='none';" title="Fermer" class="close"></button> 
           <h4><b>Ajouter un administrateur</b></h4>
-          <form  action="ajoutFonctionnaire.php"method="post">
+          <form  action="ajoutAdmin.php"method="post">
             <div class="row ">
 
 
@@ -108,14 +108,7 @@
 
                   <div class="col-xl-4">
                 <input type="text" class="form-control my-3 p-3" placeholder="Date d'ambauche" name="date" onclick="this.type='date'" required>
-                               <select class="form-control form-select my-3 p-3" name="grade_shell" id="grade_shell">
-
-                            <option value="échelle 8">échelle 8</option>
-                            <option value="échelle 9">échelle 9</option>
-                            <option value="échelle 10">échelle 10</option>
-                            <option value="échelle 11">échelle 11</option>
-                            
-                                </select>
+                               
                  
                 </div>
                 
