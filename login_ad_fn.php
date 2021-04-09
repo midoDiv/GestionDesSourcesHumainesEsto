@@ -36,6 +36,12 @@
       color: darkred;
       text-decoration: none;
     }
+    .btnp{
+      color: darkred;
+      text-decoration: none;
+      border: none;
+      background-color: transparent;
+    }
 		.btn1{
 			border:none;
 			outline: none;
@@ -112,7 +118,8 @@
 								<input type="submit" name="" value="Se connecter" class="btn1"> 
 						
 					        </div>
-					        <a href="update_password.php" >Mot de passe oublié ?</a><br>
+					        <button type="button" class="btnp" data-bs-toggle="popover" title="Instructions" data-bs-content="Contactez l'administrateur de système pour résoudre le problème">Mot de passe oublié ?</button>
+					        <br>
                             <a href="signup_fn.php" >Créer un compte fonctionnaire?</a>
 
 						
@@ -136,6 +143,11 @@
         function noBack() {
             window.history.forward();
         }
+
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})
 
         
     </script>

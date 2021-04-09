@@ -115,10 +115,7 @@ session_start();
                      
            }
 
-   function affiche_rsl()
-            {
-              document.getElementById('search_fn').style.display='block';
-            }
+
             
 
 
@@ -176,68 +173,14 @@ session_start();
 
       </div>
     </section><!-- End Breadcrumbs -->
-
+<br>
     <section class="inner-page">
       <div class="container">
 
         <!-- __________________________________________Fonctionnaire page__________________________________________________ -->
 
         <div class="Fonctionnaires_page" id="Fonctionnaires_page">
-                  <!-- Search bar -->
-        <div class="row my-3 p-3" style="background-color: rgb(219,226,226);">
-           <div class="col-lg-11">
-            <input type="search" class="form-control" placeholder="Chercher un fonctionnaire par nom, prénom, email, grade, échelle..." aria-label="Search" aria-describedby="search-addon" style="border-radius: 45px;" />
-          </div>
-
-         <div class="col-lg-1">
-            <a href="#" onclick="affiche_rsl();"><i class="bx bi-search" style="text-align: left;"></i></a>
-          </div>
-          
-                 
-        </div>
-        <!-- End Search bar -->
-        
-        <!-- Search Results  -->
-           <div class="search_fn" id="search_fn" style="background-color: white;display: none;border-radius: 20px;">
-            <table class="table table-striped caption-top table_r" style="">
-            <caption><b>&nbsp;&nbsp;&nbsp;Vous cherchez "</b>motrecherché<b>"</b><button class="close" ><img src="img/fermer.png" onclick="document.getElementById('search_fn').style.display='none';" title="Fermer" class="close_r"></button></caption>
-
-            <?php 
-
-                $con = mysqli_connect("localhost","root","","pfe");
-
-                $query="select codeF,nom,prenom,dateAmbauche,type,email,grade from fonctionnaire";
-
-                $result = mysqli_query($con, $query);
-                if (mysqli_num_rows($result) > 0)
-                {
-                  echo "<tr>
-              <th>Nom</th><th>Prénom</th><th>Date d'ambauche</th><th>Type</th><th>Grade\Echelle</th><th>Email</th></tr>";
-                  while ($row=mysqli_fetch_row($result)) {?>
-                    
-            <tr>
-                      
-                      <td><?php echo $row[1]; ?></td>
-                      <td><?php echo $row[2]; ?></td>
-                      <td><?php echo $row[3]; ?></td>
-                      <td><?php if($row[4] == 'f'){echo 'Fonctionnaire';}else{echo 'Professeur';} ?></td>
-                      <td><?php echo $row[6]; ?></td><td><?php echo $row[5]; ?></td>
-                      
-            </tr>
-            <?php
-             }
-
-                }
-                else
-                  echo "<tr><td>aucun fonctionnaire a était trouver </td></tr>";
-
-                mysqli_close($con);
-
-             ?>
-             </table>
-             
-           </div>
-        <!-- End Search Results  -->
+                  
         <!-- Form add FN + Form Edit FN -->
         
         <!-- END -->
@@ -264,16 +207,17 @@ session_start();
                 if (mysqli_num_rows($result) > 0)
                 {
                   echo "<tr>
-              <th>Nom</th><th>Prénom</th><th>Date d'ambauche</th><th>Type</th><th>Grade\Echelle</th><th>Email</th></tr>";
+              <th>Nom</th><th>Prénom</th><th>Type</th><th>Email</th></tr>";
                   while ($row=mysqli_fetch_row($result)) {?>
                     
             <tr>
                      
                       <td><?php echo $row[1]; ?></td>
                       <td><?php echo $row[2]; ?></td>
-                      <td><?php echo $row[3]; ?></td>
+                   
                       <td><?php if($row[4] == 'f'){echo 'Fonctionnaire';}else{echo 'Professeur';} ?></td>
-                      <td><?php echo $row[6]; ?></td><td><?php echo $row[5]; ?></td>
+                  
+                      <td><?php echo $row[5]; ?></td>
             </tr>
             <?php
              }

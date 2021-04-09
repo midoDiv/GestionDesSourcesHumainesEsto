@@ -134,7 +134,7 @@
 
                 <div class="col-xl-4">
                                 <input type="text" class="form-control my-3 p-3" placeholder="Prénom" name="prenom" disabled="" required value="<?php  echo $row[2] ; ?>">
-                                <input type="text" class="form-control  my-3 p-3" name="type" id="type"  disabled="" value="<?php  echo $row[4] ; ?>">
+                                <input type="text" class="form-control  my-3 p-3" name="type" id="type"  disabled="" value="<?php  if($row[4] == 'f'){echo 'Fonctionnaire';}else{echo 'Professeur';} ?>">
                 </div>
                 
 
